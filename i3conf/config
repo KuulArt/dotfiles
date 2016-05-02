@@ -1,0 +1,279 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
+set $mod Mod4
+
+# Name the workspaces
+# set $tag1 "1: www"
+# set $tag2 "2: code"
+# set $tag3 "3: term"
+# set $tag5 "5:av"
+# set $tag6 "6:music"
+
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+#bindsym $mod+$left focus left
+#bindsym $mod+$down focus down
+#bindsym $mod+$up focus up
+#bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# cycle throw workspace
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# switch to workspace
+bindsym $mod+1 workspace 1: Term
+bindsym $mod+2 workspace 2: WWW
+bindsym $mod+3 workspace 3: Text
+bindsym $mod+4 workspace 4: FM
+bindsym $mod+5 workspace 5: IDE
+bindsym $mod+6 workspace 6: Ranger
+bindsym $mod+7 workspace 7: Chrome Apps
+bindsym $mod+8 workspace 8: Audio Tools
+bindsym $mod+9 workspace 9: Graphics
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1: Term
+bindsym $mod+Shift+2 move container to workspace 2: WWW
+bindsym $mod+Shift+3 move container to workspace 3: Text
+bindsym $mod+Shift+4 move container to workspace 4: FM
+bindsym $mod+Shift+5 move container to workspace 5: IDE
+bindsym $mod+Shift+6 move container to workspace 6: Ranger
+bindsym $mod+Shift+7 move container to workspace 7: Chrome Apps
+bindsym $mod+Shift+8 move container to workspace 8: Audio Tools
+bindsym $mod+Shift+9 move container to workspace 9: Graphics
+bindsym $mod+Shift+0 move container to workspace 10
+
+# open specific applications on workspace launch
+
+# exec --no-startup-id i3-msg 'workspace number 6; exec ranger'
+exec --no-startup-id i3-msg 'workspace 1: Term; exec i3-sensible-terminal'
+# exec --no-startup-id i3-msg 'workspace 8; exec virtualbox'
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 5 px or 3 ppt
+        bindsym Down        resize grow height 5 px or 3 ppt
+        bindsym Up          resize shrink height 5 px or 3 ppt
+        bindsym Right       resize grow width 5 px or 3 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status
+  colors {
+    separator #666666
+    background #333333
+    statusline #bbbbbb
+    focused_workspace  #008fff #007fff #ffffff
+    active_workspace   #333333 #5f676a #ffffff
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #aa0000 #990000 #ffffff
+}
+  position top
+  status_command i3status -c ~/.i3/i3status.conf
+}
+
+# APPEARANCE AND FUNCTIONALITY
+# thing to make workspace switch back to previous one if you click it again
+workspace_auto_back_and_forth yes
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86AudioMicMute exec ~/scripts/touchpad.sh # toggle touchpad
+
+#Toggle multitouch script
+# bindsym XF86Tools exec ~/xSwipe-master/touch.sh #turn multitouch on
+
+# use $mod+Mouse to drag floating windows to their wanted position
+floating_modifier $mod
+
+# toggle between keyboard layouts
+bindsym $mod+Shift+u exec /home/kuulart/scripts/toggle-xkbmap.sh &
+
+#Set workspaces
+workspace 9 output HDMI2
+workspace 8 output HDMI2
+
+#change font
+
+font pango: Ubuntu Mono 12
+
+bindsym $mod+Pause mode "$mode_system"
+
+#autolock after some time
+bindsym $mod+l exec ~/scripts/fuzzy_lock.sh
+exec xautolock -time 15 -locker '~/scripts/fuzzy_lock.sh' &
+
+#open applications
+bindsym $mod+j exec chromium
+bindsym $mod+k exec atom
+bindsym $mod+p exec spacefm
+
+# color stuff
+client.focused 		#000000 #000000 #ffffff #000000
+client.focused_inactive #000000 #000000 #cccccc #000000
+client.unfocused 	#000000 #000000 #A3A3A3 #000000
+
+focus_follows_mouse yes
+
+# border / titlebar
+new_window normal
+hide_edge_borders vertical
+bindsym Control+Shift+x [class="^.*"] border toggle
+for_window [class="^.*"] border pixel 1
+for_window [class="URxvt"] border pixel 1
+for_window [class="atom"] border pixel 1
+for_window [class="Lxappearance"] border normal
+for_window [class="Vlc"] border pixel 1
+for_window [class="mpv"] border pixel 1
+for_window [class="spacefm"] border pixel 1
+for_window [class="chromium"] border pixel 1
+for_window [class="Geary"] border pixel 1
+for_window [class="Lmms"] border pixel 1
+for_window [class="Feh"] border pixel 1
+
+#######################################################################
+# automatically start i3-config-wizard to offer the user to create a
+# keysym-based config which used their favorite modifier (alt or windows)
+#
+# i3-config-wizard will not launch if there already is a config file
+# in ~/.i3/config.
+#
+# Please remove the following exec line:
+#######################################################################
+exec i3-config-wizard
+exec ~/.xSwipe-master/touch.sh &
+exec  xrandr --output HDMI2 --auto --left-of eDP1
+exec --no-startup-id feh --bg-fill ~/Pictures/rain_by_phranzee.jpg
