@@ -1,0 +1,36 @@
+// to reload i3 config file
+i3 reload
+
+//to check the last modification of i3 config file
+i3 --more-version
+
+// to check audio interfaces/sinks
+pactl list sinks
+
+//link a systematic reference from a file to another file
+ln -s .Xresources .Xdefaults-$(hostname)
+
+//update .Xresources to actual output
+xrdb -merge -Xresources
+
+//to display keyboard events
+xev
+
+// printer setup
+system-config-printer
+
+//connman setup
+https://forum.manjaro.org/index.php?topic=15461.0
+
+
+//output display
+ xrandr --output HDMI2 --auto --left-of eDP1
+
+
+//to enable two finger scroll
+input --set-prop 13 "Synaptics Two-Finger Scrolling" 1 1
+
+// to mount ro windows file system that is booted up 
+cd /media
+sudo mkdir WinOS
+sudo mount -t ntfs-3g -o ro /dev/sda3 /media/WinOS
