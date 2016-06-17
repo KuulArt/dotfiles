@@ -186,15 +186,15 @@ bar {
 	font pango:Source Sans Pro-10 12
   	status_command i3blocks
 # status_command i3status
-#  colors {
-#    separator #666666
-#    background #333333
-#    statusline #bbbbbb
-#    focused_workspace  #008fff #007fff #ffffff
-#    active_workspace   #333333 #5f676a #ffffff
-#    inactive_workspace #333333 #222222 #888888
-#    urgent_workspace   #aa0000 #990000 #ffffff
-#}
+  colors {
+    separator #999999
+    background #191911
+    statusline #bbbbbb
+    focused_workspace  #000000 #b37700 #ffffff
+    active_workspace   #555555 #e69900 #ffffff
+    inactive_workspace #000000 #000000 #a6a6a6
+    urgent_workspace   #000000 #990000 #ffffff
+}
   position top
 #  status_command i3status -c ~/.i3/i3status.conf
 }
@@ -278,4 +278,6 @@ for_window [class="Feh"] border pixel 1
 exec i3-config-wizard
 exec ~/.xSwipe-master/touch.sh &
 exec  xrandr --output HDMI2 --auto --left-of eDP1
-exec --no-startup-id feh --bg-fill ~/Pictures/rain_by_phranzee.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/gray_black_texture_surface_point_236_1920x1080.jpg
+exec --no-startup-id nm-applet
+
