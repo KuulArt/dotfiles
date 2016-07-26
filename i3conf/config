@@ -222,7 +222,7 @@ bindsym XF86AudioMicMute exec ~/scripts/touchpad.sh # toggle touchpad
 floating_modifier $mod
 
 # toggle between keyboard layouts
-bindsym $mod+Shift+u exec /home/kuulart/scripts/toggle-xkbmap.sh &
+bindsym $mod+Shift+u exec /home/kuulart/.dotfiles/scripts/toggle-xkbmap.sh &
 
 #Set workspaces
 workspace 9 output HDMI2
@@ -235,13 +235,14 @@ font pango: Ubuntu Mono 12
 bindsym $mod+Pause mode "$mode_system"
 
 #autolock after some time
-bindsym $mod+l exec ~/scripts/fuzzy_lock.sh
+bindsym $mod+l exec ~/.dotfiles/scripts/fuzzy_lock.sh
 exec xautolock -time 15 -locker '~/scripts/fuzzy_lock.sh' &
 
 #open applications
 bindsym $mod+j exec chromium
 bindsym $mod+k exec atom
 bindsym $mod+p exec spacefm
+bindsym $mod+Shift+p	exec "chromium --app='http://www.google.com'; floating enable; resize set 640 480"
 
 # color stuff
 client.focused 		#000000 #000000 #ffffff #000000
@@ -280,4 +281,6 @@ exec ~/.xSwipe-master/touch.sh &
 exec  xrandr --output HDMI2 --auto --left-of eDP1
 exec --no-startup-id feh --bg-fill ~/Pictures/gray_black_texture_surface_point_236_1920x1080.jpg
 exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
+exec --no-startup-id cadence --minimized
 

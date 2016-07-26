@@ -38,3 +38,7 @@ sudo mount -t ntfs-3g -o ro /dev/sda3 /media/WinOS
 // virtual midi ports
 
 sudo modprobe snd_virmidi midi_devs=1
+
+// find shit
+find . -name \*.php -exec grep -q "Mage" '{}' \; -print
+
